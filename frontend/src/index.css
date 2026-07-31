@@ -7,8 +7,51 @@
 .Saas-features-block {
   margin-bottom: 17em;
 }
+.error-help {
+  position: fixed;
+  top: 110px;
+  right: 25px;
+  z-index: 1000;
+}
+.help-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background: #0d6efd;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.4;
+}
+.help-btn:hover {
+  opacity: 1;
+}
+.help-popover {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 280px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  font-size: 14px;
+}
+.help-popover h6 {
+  margin-bottom: 10px;
+}
+.help-popover p {
+  margin-bottom: 8px;
+  color: #666;
+}
+.help-popover span {
+  font-size: 13px;
+  color: #888;
+}
 @media (max-width:764px){
   .Saas-features-block {
     margin-bottom: 8em;
+    padding-top: 3em !important;
   }
 }

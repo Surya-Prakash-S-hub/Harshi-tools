@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -23,15 +24,19 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
       <div className="container">
 
-        <a
+        <Link
           className="navbar-brand fw-bold fs-4"
-          href="/"
+          to={'/'}
         >
           Harshi<span className="text-primary">Tools</span>
-        </a>
+        </Link>
 
 
-        <div className="d-flex gap-2">
+        <div className="d-flex gap-3">
+
+          <Link to={'/about'} className="btn btn-outline-secondary">
+            About
+          </Link>
 
 
           {/* Tools Dropdown */}
@@ -47,21 +52,12 @@ const Navbar = () => {
             <ul className="dropdown-menu dropdown-menu-end">
 
               <li>
-                <a
+                <Link
                   className="dropdown-item"
-                  href="/"
+                  to={'/'}
                 >
                   Image Converter
-                </a>
-              </li>
-
-              <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                >
-                  Image Compressor
-                </a>
+                </Link>
               </li>
 
             </ul>

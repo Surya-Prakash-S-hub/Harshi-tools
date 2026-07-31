@@ -1,4 +1,4 @@
-export const Footer = () => {
+const Footer = () => {
   return (
     <>
       <footer className="mt-5 py-4 border-top">
@@ -15,3 +15,5 @@ export const Footer = () => {
     </>
   );
 };
+
+export default Footer;

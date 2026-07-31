@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import ErrorHelp from "./Error";
 const api = import.meta.env.VITE_API_URL;
 
-export const InputField = () => {
+const Home = () => {
   const [image, setImage] = useState(null);
   const [format, setFormat] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -24,13 +25,9 @@ export const InputField = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        `${api}/image-converter`,
-        formData,
-        {
-          responseType: "blob",
-        },
-      );
+      const response = await axios.post(`${api}/image-converter`, formData, {
+        responseType: "blob",
+      });
 
       const url = URL.createObjectURL(response.data);
 
@@ -60,7 +57,8 @@ export const InputField = () => {
           <div className="text-center mb-5">
             <h1 className="display-5 fw-bold">Free Online Image Converter</h1>
             <p className="text-muted">
-              Convert JPG, PNG, and WebP images instantly with a fast and secure online image conversion tool.
+              Convert JPG, PNG, and WebP images instantly with a fast and secure
+              online image conversion tool.
             </p>
           </div>
           <main
@@ -83,9 +81,9 @@ export const InputField = () => {
                   required
                 />
               </div>
-                {image && (
-                  <div className="small text-success mt-2">📁  {image.name}</div>
-                )}
+              {image && (
+                <div className="small text-success mt-2">📁 {image.name}</div>
+              )}
               <div>
                 <select
                   className="form-select form-select-md mb-2"
@@ -120,6 +118,7 @@ export const InputField = () => {
                 </button>
               </div>
             </form>
+            <ErrorHelp />
           </main>
           {downloadurl && (
             <div
@@ -153,3 +152,5 @@ export const InputField = () => {
     </>
   );
 };
+
+export default Home;
