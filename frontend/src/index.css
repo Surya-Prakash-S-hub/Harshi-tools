@@ -1,0 +1,14 @@
+*,*::after,*::before
+{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.Saas-features-block {
+  margin-bottom: 17em;
+}
+@media (max-width:764px){
+  .Saas-features-block {
+    margin-bottom: 8em;
+  }
+}
