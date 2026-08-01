@@ -33,15 +33,12 @@ fs.mkdirSync(outputsDir, { recursive: true });
 // -----------------------------------------------------------------------------
 // Middleware
 // -----------------------------------------------------------------------------
-console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
+// console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      process.env.FRONTEND_URL
-    ],
+    origin: ["http://localhost:5173", process.env.FRONTEND_URL],
     methods: ["GET", "POST"],
-  })
+  }),
 );
 app.use(express.json());
 
@@ -127,14 +124,14 @@ app.post("/image-converter", upload.single("image"), async (req, res) => {
 
     outputPath = path.join(outputsDir, outputName);
 
-    await sharp(imagePath)
-      .toFormat(format)
-      .toFile(outputPath);
+    await sharp(imagePath).toFormat(format).toFile(outputPath);
 
     // Original upload is no longer needed
     if (fs.existsSync(imagePath)) {
       fs.unlinkSync(imagePath);
     }
+
+    res.setHeader("Access-Control-Allow-Origin", process.env.FRONTEND_URL);
 
     return res.download(outputPath, outputName, (err) => {
       if (err) {
@@ -145,7 +142,6 @@ app.post("/image-converter", upload.single("image"), async (req, res) => {
         fs.unlinkSync(outputPath);
       }
     });
-
   } catch (err) {
     console.error(err);
 
