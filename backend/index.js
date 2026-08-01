@@ -33,6 +33,7 @@ fs.mkdirSync(outputsDir, { recursive: true });
 // -----------------------------------------------------------------------------
 // Middleware
 // -----------------------------------------------------------------------------
+console.log("FRONTEND_URL:", process.env.FRONTEND_URL);
 app.use(
   cors({
     origin: [
