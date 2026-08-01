@@ -6,10 +6,11 @@
 }
 .Saas-features-block {
   margin-bottom: 17em;
+  position: relative;
 }
 .error-help {
   position: fixed;
-  top: 110px;
+  bottom: 200px;
   right: 25px;
   z-index: 1000;
 }
@@ -29,8 +30,8 @@
 }
 .help-popover {
   position: absolute;
-  right: 0;
-  top: 45px;
+  right: 15px;
+  bottom: 45px;
   width: 280px;
   padding: 15px;
   background: white;
@@ -48,6 +49,25 @@
 .help-popover span {
   font-size: 13px;
   color: #888;
+}
+/* some style tools */
+.add-margin-bottom {
+  margin: 20em auto !important;
+}
+/* Mobile & Tablet */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .navbar-nav {
+    width: 100%;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.75rem 0;
+  }
 }
 @media (max-width:764px){
   .Saas-features-block {
