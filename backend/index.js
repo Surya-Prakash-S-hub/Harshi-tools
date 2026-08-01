@@ -34,7 +34,12 @@ fs.mkdirSync(outputsDir, { recursive: true });
 // Middleware
 // -----------------------------------------------------------------------------
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    methods: ["GET", "POST"],
+  })
+);
 app.use(express.json());
 
 // -----------------------------------------------------------------------------
