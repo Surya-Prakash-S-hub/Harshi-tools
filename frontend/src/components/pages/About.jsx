@@ -36,7 +36,7 @@ const About = () => {
         interesting tools that make working with images easier.
       </p>
 
-      <h4>A small quote</h4>
+      <h4>A small quote.</h4>
 
       <p className="px-2 bg-body-tertiary py-2 text-center fs-4 text-capitalize">
         "Every big project starts with a small first version. This is mine, and
