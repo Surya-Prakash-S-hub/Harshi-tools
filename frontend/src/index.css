@@ -54,6 +54,45 @@
 .add-margin-bottom {
   margin: 20em auto !important;
 }
+/* arrange file style start */
+.file-name {
+  padding: 7px;
+  border-radius: 50px;
+  cursor: default;
+  transition: background-color 0.12s ease;
+}
+.file-name button {
+  position: absolute;
+  border: none;
+  border-radius: 50px;
+  background-color: rgba(36, 36, 36, 0.2);
+  padding: 3px;
+  width: 10px;
+  height: 10px;
+  top: 0px;
+  right:0px;
+  display: none;
+}
+.file-name:hover {
+  background-color: rgba(46, 82, 243, 0.226);
+}
+.file-name:hover button {
+  display: block;
+}
+.file-name::after {
+  content: '';
+  position: absolute;
+  width: 1px !important;
+  height: 60%;
+  background-color: gray;
+  top: 25%;
+  right: -11px;
+  pointer-events: none;
+}
+.file-name:last-child::after {
+  display: none;
+}
+/* arrange file style end */
 /* Mobile & Tablet */
 @media (max-width: 991.98px) {
   .navbar-collapse {

@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary px-4">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary px-2 px-lg-5">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             Harshi<span className="text-primary">Tools</span>
@@ -53,7 +53,7 @@ const Navbar = () => {
                   Tools
                 </Link>
 
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu dropdown-menu-end">
                   <li>
                     <Link className="dropdown-item" to="/">
                       Convert Image
