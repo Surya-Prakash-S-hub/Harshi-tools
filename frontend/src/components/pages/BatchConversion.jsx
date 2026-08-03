@@ -24,20 +24,35 @@ const BatchConversion = () => {
     `${pad(now.getSeconds())}.zip`;
 
   const handleFiles = (e) => {
-    const selectedFile = Array.from(e.target.files).map((file) => ({
+    const selectedFiles = Array.from(e.target.files).map((file) => ({
       id: crypto.randomUUID(),
       file,
+      preview: URL.createObjectURL(file),
     }));
-    if (selectedFile.length > maxFiles) {
-      toast.error(`You can upload upto to ${maxFiles} files.`);
+
+    if (selectedFiles.length > maxFiles) {
+      toast.error(`You can upload up to ${maxFiles} files.`);
+
       fileInputRef.current.value = "";
+
+      // Clean up the created object URLs
+      selectedFiles.forEach((image) => {
+        URL.revokeObjectURL(image.preview);
+      });
+
       setImages([]);
       return;
     }
-    setImages(selectedFile);
+
+    setImages(selectedFiles);
   };
   const removeFile = (id) => {
     const updatedFiles = images.filter((image) => image.id !== id);
+    const imageToRemove = images.find((image) => image.id === id);
+
+    if (imageToRemove) {
+      URL.revokeObjectURL(imageToRemove.preview);
+    }
 
     setImages(updatedFiles);
 
@@ -94,7 +109,9 @@ const BatchConversion = () => {
           <div className="text-center mb-5">
             <h1 className="display-5 fw-bold">Batch Image Conversion</h1>
             <p className="text-muted">
-              Convert multiple images at once quickly and easily. Upload your files, choose the desired format, and download all converted images together in a single ZIP file.
+              Convert multiple images at once quickly and easily. Upload your
+              files, choose the desired format, and download all converted
+              images together in a single ZIP file.
             </p>
           </div>
           <main
@@ -117,25 +134,39 @@ const BatchConversion = () => {
                   multiple
                 />
               </div>
-              <div className="d-flex flex-wrap">
-                {images &&
-                  images.map((image) => {
-                    return (
-                      <div
-                        className="text-success mt-2 me-3 file-name position-relative"
-                        key={image.id}
-                      >
-                        <span className="fs-7">📁 {image.file.name}</span>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          aria-label="Remove file"
-                          onClick={() => removeFile(image.id)}
-                        ></button>
-                      </div>
-                    );
-                  })}
-              </div>
+              {images.length > 0 && (
+                <details>
+                  <summary>preview</summary>
+                  <div className="image-container batch">
+                    {images.map((image) => {
+                      return (
+                        <div
+                          className="small image-card text-success mt-2 border"
+                          key={image.id}
+                        >
+                          <img
+                            src={image.preview}
+                            alt={image.file.name}
+                            className="image-image"
+                          />{" "}
+                          <div
+                            className="image-text text-center"
+                            title={image.file.name}
+                          >
+                            {image.file.name}
+                          </div>
+                          <button
+                            type="button"
+                            className="btn-close image-cancel"
+                            aria-label="Remove file"
+                            onClick={() => removeFile(image.id)}
+                          ></button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </details>
+              )}
               <div>
                 <select
                   className="form-select form-select-md mb-2"

@@ -32,6 +32,8 @@ const About = () => {
         <li>ZIP download for converted files</li>
         <li>Improved file handling and cleanup</li>
         <li>Better user experience while converting images</li>
+        <li>Enhanced single image conversion with image thumbnail preview and drag-and-drop file selection.<span class="badge text-bg-secondary">New</span></li>
+        <li>Added image preview support for batch conversion.<span className="badge text-bg-secondary">New</span></li>
       </ul>
 
       <details className="px-3">
@@ -48,8 +50,7 @@ const About = () => {
       </p>
 
       <p className="px-2 py-2 lh-sm bg-info-subtle fs-5 border-start border-info border-4">
-        More useful tools are planned for upcoming versions, including image
-  compression, resizing, and other interesting features.
+        More useful tools are planned for upcoming versions, including image compression, resizing, and other interesting features.
       </p>
 
       <h4>A small quote.</h4>

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import ErrorHelp from "./Error";
+import DragDrop from "./DragnDrop";
 const api = import.meta.env.VITE_API_URL;
 
 const Home = () => {
@@ -10,7 +11,22 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [downloadurl, setDownloadUrl] = useState(null);
   const [imageName, setImageName] = useState(null);
-  const [error, setError] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [dragging, setDragging] = useState(false);
+
+  const imageOnChange = (files) => {
+    const file = files[0];
+
+    if (!file) return;
+
+    setImage(file);
+
+    if (preview) {
+      URL.revokeObjectURL(preview);
+    }
+
+    setPreview(URL.createObjectURL(file));
+  };
 
   const showDatas = async (e) => {
     e.preventDefault();
@@ -42,14 +58,18 @@ const Home = () => {
       // Create new filename
       setImageName(`${fileName}.${format}`);
     } catch (error) {
-      setError(error.message);
+      toast.error(error.message || "Error Occured");
     } finally {
       setLoading(false);
     }
   };
-  if (error) {
-    toast.error(error, { toastId: "server-error" });
-  }
+  useEffect(() => {
+    return () => {
+      if (preview) {
+        URL.revokeObjectURL(preview);
+      }
+    };
+  }, [preview]);
   return (
     <>
       <section className="pt-3 Saas-features-block">
@@ -66,24 +86,49 @@ const Home = () => {
             style={{ maxWidth: "600px" }}
           >
             <form className="d-flex flex-column gap-4" onSubmit={showDatas}>
-              <div className="input-group">
-                <input
-                  type="file"
-                  className="form-control"
-                  name="Image"
-                  id="inputGroupFile04"
-                  accept="image/*"
-                  aria-describedby="inputGroupFileAddon04"
-                  aria-label="Upload"
-                  onChange={(e) => {
-                    setImage(e.target.files[0]);
-                  }}
-                  required
-                />
-              </div>
-              {image && (
-                <div className="small text-success mt-2">📁 {image.name}</div>
-              )}
+              <DragDrop
+                accept="image/*"
+                onFiles={imageOnChange}
+                onDragStateChange={setDragging}
+              >
+                {!image ? (
+                  <div className={`upload-box border ${dragging && `border-primary`}`}>
+                    {dragging ? (<span className="text-primary fs-3">Drop Here</span>) : (<span>Drag and Drop</span>)}
+                    <span>{dragging ? "" : "OR"}</span>
+                    <span className="text-primary">{dragging ? "" : "Select File"}</span>
+                  </div>
+                ) : (
+                  <div className={`image-container border p-3 rounded ${dragging ? `border-primary` : `border-primary-subtle`}`}>
+                    <div className="image-card text-success border">
+                      <img
+                        src={preview}
+                        alt={image.name}
+                        className="image-image"
+                      />{" "}
+                      <div
+                        className="image-text text-center"
+                        title={image.name}
+                      >
+                        <span className="small">{image.name}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </DragDrop>
+              {/* {image && (
+                <div className="image-container">
+                  <div className="small image-card text-success mt-2 border">
+                    <img
+                      src={preview}
+                      alt={image.name}
+                      className="image-image"
+                    />{" "}
+                    <div className="image-text text-center" title={image.name}>
+                      {image.name}
+                    </div>
+                  </div>
+                </div>
+              )} */}
               <div>
                 <select
                   className="form-select form-select-md mb-2"
