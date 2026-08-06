@@ -6,20 +6,22 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NotFound from "./components/pages/Notfound";
 import BatchConversion from "./components/pages/BatchConversion";
+import ErrorHelp from "./components/pages/Error";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-        <ToastContainer position="bottom-right" />
+        <ToastContainer position="top-left" />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/batch" element={<BatchConversion />} />
+          <Route path="/batch-conversion" element={<BatchConversion />} />
           {/* Not Found Page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ErrorHelp />
         <Footer />
       </BrowserRouter>
     </>

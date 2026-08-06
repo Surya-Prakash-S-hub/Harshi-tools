@@ -1,77 +1,113 @@
 const About = () => {
   return (
-    <section className="container col-12 col-md-6 py-5">
-      <h1>
-        Hey, It's <span className="text-primary">Harsh</span> 👋
-      </h1>
+    <section className="bg-surface">
+      <div className="rounded-xl p-5 sm:p-8 max-w-4xl px-4 py-8 text-text sm:px-6 lg:px-8 mx-auto">
+        <h1 className="my-3 text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl">
+          Hey, It&apos;s <span className="text-primary">Harsh</span> 👋
+        </h1>
 
-      <p className="px-2">
-        Thanks for visiting Harsh Applications. I really appreciate your time
-        and hope this small tool helps you with your image conversion needs.
-      </p>
+        <div className="space-y-4 text-base leading-relaxed text-text-secondary sm:text-lg">
+          <p>
+            Thanks for visiting Harsh Applications. I really appreciate your
+            time and hope this small tool helps you with your image conversion
+            needs.
+          </p>
 
-      <p className="px-2">
-        This website is created to make image conversion simple and easy. No
-        complicated steps, just upload your image, choose the format, and
-        convert it.
-      </p>
+          <p>
+            This website is created to make image conversion simple and easy. No
+            complicated steps, just upload your image, choose the format, and
+            convert it.
+          </p>
+        </div>
 
-      <h4>About this version</h4>
+        <div className="mt-8 space-y-4">
+          <h2 className="text-xl font-semibold text-text sm:text-2xl">
+            About this version
+          </h2>
 
-      <p className="px-2">
-        This is <span className="text-decoration-underline">version 2</span> of
-        Harsh Applications. In this version, batch image conversion has been
-        introduced, allowing users to convert multiple images at once instead of
-        processing them individually.
-      </p>
+          <p className="text-text-secondary">
+            This is{" "}
+            <span className="font-semibold text-primary underline underline-offset-4">
+              version 2
+            </span>{" "}
+            of Harsh Applications. In this version, batch image conversion has
+            been introduced, allowing users to convert multiple images at once
+            instead of processing them individually.
+          </p>
+        </div>
 
-      <h6>What's new in Version 2?</h6>
-      <ul>
-        <li>Batch image conversion support</li>
-        <li>Multiple image upload and management</li>
-        <li>ZIP download for converted files</li>
-        <li>Improved file handling and cleanup</li>
-        <li>Better user experience while converting images</li>
-        <li>Enhanced single image conversion with image thumbnail preview and drag-and-drop file selection.<span class="badge text-bg-secondary">New</span></li>
-        <li>Added image preview support for batch conversion.<span className="badge text-bg-secondary">New</span></li>
-      </ul>
+        <div className="mt-8">
+          <h3 className="mb-3 text-lg font-semibold text-text sm:text-xl">
+            What&apos;s new in Version 2?
+          </h3>
 
-      <details className="px-3">
-        <summary>version 1</summary>
-        <p className="p-2 bg-secondary-subtle">
-          The first version focuses on the basic image conversion feature,
-          where you can convert images between different formats quickly.
-        </p>
-      </details>
-      <h4>Future plans</h4>
+          <ul className="list-inside list-disc space-y-2 pl-2 text-text-secondary">
+            <li>Batch image conversion support</li>
+            <li>Multiple image upload and management</li>
+            <li>ZIP download for converted files</li>
+            <li>Improved file handling and cleanup</li>
+            <li>Better user experience while converting images</li>
+            <li className="flex flex-wrap items-center gap-2">
+              Enhanced single image conversion with image thumbnail preview and
+              drag-and-drop file selection.
+              <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
+                New
+              </span>
+            </li>
+            <li className="flex flex-wrap items-center gap-2">
+              Added image preview support for batch conversion.
+              <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-semibold text-primary">
+                New
+              </span>
+            </li>
+          </ul>
+        </div>
 
-      <p className="px-2">
-        In the next versions, more useful features will be added like:
-      </p>
+        <details className="mt-8 rounded-2xl border border-border bg-background p-3 text-text-secondary">
+          <summary className="cursor-pointer list-none font-medium text-text">
+            Version 1
+          </summary>
+          <p className="mt-3 rounded-xl border border-border bg-surface-alt p-3 text-sm leading-relaxed text-text-secondary">
+            The first version focuses on the basic image conversion feature,
+            where you can convert images between different formats quickly.
+          </p>
+        </details>
 
-      <p className="px-2 py-2 lh-sm bg-info-subtle fs-5 border-start border-info border-4">
-        More useful tools are planned for upcoming versions, including image compression, resizing, and other interesting features.
-      </p>
+        <div className="mt-8 space-y-4">
+          <h3 className="text-xl font-semibold text-text">Future plans</h3>
 
-      <h4>A small quote.</h4>
+          <p className="text-text-secondary">
+            In the next versions, more useful features will be added like:
+          </p>
 
-      <p className="px-2 bg-body-tertiary py-2 text-center fs-4 text-capitalize">
-        <q>
-          Every big project starts with a small version. This is mine, and
-          there is more to come.
-        </q>
-      </p>
+          <div className="rounded-sm border-l-4 border-info bg-info-soft/70 p-4 text-base text-text sm:text-lg">
+            More useful tools are planned for upcoming versions, including image
+            compression, resizing, and other interesting features.
+          </div>
+        </div>
 
-      <p className="px-2 fst-italic">
-        <q>Sometimes the simple tools are the ones we use the most.</q>
-      </p>
+        <div className="mt-8 space-y-4">
+          <h3 className="text-xl font-semibold text-text">A small quote.</h3>
 
-      <h4>Like it?</h4>
+          <blockquote className="rounded-2xl border border-border bg-background px-4 py-5 text-center text-lg italic text-text sm:text-xl">
+            Every big project starts with a small version. This is mine, and
+            there is more to come.
+          </blockquote>
 
-      <p className="px-2">
-        If you find this tool useful, share it with others. A small share can
-        help this little project reach more people.
-      </p>
+          <p className="italic text-text-secondary">
+            <q>Sometimes the simple tools are the ones we use the most.</q>
+          </p>
+        </div>
+
+        <div className="mt-8 space-y-3">
+          <h3 className="text-xl font-semibold text-text">Like it?</h3>
+
+          <p className="text-text-secondary">
+            If you find this tool useful, share it with others. A small share
+            can help this little project reach more people.
+          </p>
+        </div>
+      </div>
     </section>
   );
 };

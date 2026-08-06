@@ -1,9 +1,43 @@
-*,*::after,*::before
-{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+@import "./otherStyles/theme.css";
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--muted);
+
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-shadow: var(--shadow);
 }
+
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+/* Theme stays compact */
+.theme-dropdown {
+  width: max-content;
+}
+/* festures style */
 .Saas-features-block {
   margin-bottom: 17em;
   position: relative;
@@ -34,9 +68,7 @@
   bottom: 45px;
   width: 280px;
   padding: 15px;
-  background: white;
   border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
   font-size: 14px;
 }
 .help-popover h6 {
@@ -44,11 +76,9 @@
 }
 .help-popover p {
   margin-bottom: 8px;
-  color: #666;
 }
 .help-popover span {
   font-size: 13px;
-  color: #888;
 }
 /* some style tools */
 .add-margin-bottom {
@@ -70,7 +100,7 @@
   width: 10px;
   height: 10px;
   top: 0px;
-  right:0px;
+  right: 0px;
   display: none;
 }
 .file-name:hover {
@@ -80,7 +110,7 @@
   display: block;
 }
 .file-name::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 1px !important;
   height: 60%;
@@ -95,7 +125,7 @@
 /* arrange file style end */
 /* image thumbnail card style start */
 .image-container {
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -107,13 +137,43 @@
 }
 .image-card {
   border-radius: 15px;
-  width: 150px;
+  width: 160px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  gap: 5px;
+  gap: 2px;
   position: relative;
+  animation: zoomIn 0.3s ease forwards;
+}
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.image-container.batch .image-card img {
+  transition: scale 0.21s ease;
+}
+.image-container.batch .image-card.removing-image {
+  animation: zoomOut 0.3s ease forwards;
+}
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+.image-container.batch .image-card:hover img {
+  scale: 1.09;
 }
 .image-card .image-image {
   width: 100%;
@@ -127,12 +187,16 @@
   white-space: nowrap;
 }
 .image-card .image-cancel {
+  font-size: x-large;
   position: absolute;
   z-index: 1;
-  top: -7px;
+  top: -21px;
   border-radius: 50px;
-  right: -7px;
+  right: -2px;
   display: none;
+}
+.image-card .image-cancel:active {
+  color: var(--danger);
 }
 .image-card:hover .image-cancel {
   display: block;
@@ -141,7 +205,7 @@
 /* image drag and drop style goes here */
 .upload-box {
   width: 100%;
-  height: 100px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -150,27 +214,139 @@
   cursor: pointer;
 }
 .upload-box:active {
-  box-shadow: 0 0 0.25em 0.25em rgba(13, 109, 253, 0.25);
+  box-shadow: 0 0 0.25em 0.25em var(--color-shadow);
 }
 .upload-box span {
   pointer-events: none;
 }
-/* Mobile & Tablet */
-@media (max-width: 991.98px) {
-  .navbar-collapse {
-    width: 100%;
-    margin-top: 1rem;
-  }
+/* NotFound page styles */
+.notfound-page {
+  min-height: calc(100vh - 140px);
+  padding: 4rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--background);
+  color: var(--text);
+}
 
-  .navbar-nav {
-    width: 100%;
-  }
+.notfound-card {
+  width: 100%;
+  max-width: 760px;
+  padding: 2.5rem;
+  border-radius: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
 
-  .navbar-nav .nav-link {
-    padding: 0.75rem 0;
+.notfound-title {
+  margin: 0;
+  font-size: clamp(4.5rem, 8vw, 7rem);
+  line-height: 0.95;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.notfound-subtitle {
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  color: var(--text);
+}
+
+.notfound-lead {
+  margin: 0 0 1.5rem;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.notfound-copy {
+  margin-bottom: 1.75rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+}
+
+.notfound-divider {
+  width: 100%;
+  height: 1px;
+  margin: 2rem 0;
+  border: none;
+  background: var(--border);
+}
+
+.notfound-heading {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.notfound-reasons {
+  margin: 0 0 1.75rem;
+  color: var(--text-secondary);
+  line-height: 1.9;
+  text-align: left;
+}
+
+.notfound-blockquote {
+  margin: 0 auto 1.75rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--primary);
+  border-radius: 18px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-style: italic;
+  max-width: 100%;
+}
+
+.notfound-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.8rem;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.notfound-button:hover,
+.notfound-button:focus-visible {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(37, 99, 235, 0.18);
+}
+
+.notfound-note {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 640px) {
+  .notfound-page {
+    min-height: auto;
+    padding: 2.5rem 1rem;
+  }
+  .notfound-card {
+    padding: 1.75rem;
+  }
+  .notfound-reasons {
+    text-align: left;
   }
 }
-@media (max-width:764px){
+/* Mobile & Tablet */
+@media (max-width: 991.98px) {
+}
+@media (max-width: 764px) {
   .Saas-features-block {
     margin-bottom: 8em;
     padding-top: 3em !important;
