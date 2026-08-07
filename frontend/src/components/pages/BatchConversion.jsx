@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import BatchDrag from "./BatchDragnDrop";
+import ErrorHelp from "./Error";
 const api = import.meta.env.VITE_API_URL;
 
 const BatchConversion = () => {
@@ -131,7 +132,7 @@ const BatchConversion = () => {
   };
   return (
     <>
-      <section className="bg-background px-4 py-8 sm:px-6 lg:px-8">
+      <section className="bg-background px-4 py-8 sm:px-6 lg:px-8 min-h-screen h-full">
         <div className="mx-auto max-w-5xl">
           <div className="mb-6 text-center sm:mb-8">
             <h1 className="text-3xl font-black tracking-tight text-text sm:text-4xl lg:text-5xl">
@@ -144,7 +145,7 @@ const BatchConversion = () => {
             </p>
           </div>
           <main
-            className={`mx-auto w-full max-w-4xl rounded-3xl border border-border bg-surface/80 p-4 shadow-md shadow-shadow/5 backdrop-blur-md sm:p-6 lg:p-8 ${loading ? "pointer-events-none" : "pointer-events-auto"}`}
+            className={`mx-auto mt-10 mb-20 w-full max-w-4xl rounded-3xl border border-border bg-surface/80 p-4 shadow-md shadow-shadow/5 backdrop-blur-md sm:p-6 lg:p-8 ${loading ? "pointer-events-none" : "pointer-events-auto"}`}
           >
             <form className="space-y-5" onSubmit={showDatas}>
               <BatchDrag
@@ -275,6 +276,7 @@ const BatchConversion = () => {
             </div>
           )}
         </div>
+        <ErrorHelp />
       </section>
     </>
   );

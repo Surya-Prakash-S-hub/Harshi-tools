@@ -6,7 +6,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NotFound from "./components/pages/Notfound";
 import BatchConversion from "./components/pages/BatchConversion";
-import ErrorHelp from "./components/pages/Error";
+import ResizeImage from "./components/pages/ResizeImage";
+import CompressImage from "./components/pages/CompressImage";
 
 function App() {
   return (
@@ -18,10 +19,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/batch-conversion" element={<BatchConversion />} />
+          <Route path="/resize-image" element={<ResizeImage />} />
+          <Route path="/compress-image" element={<CompressImage />} />
           {/* Not Found Page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <ErrorHelp />
         <Footer />
       </BrowserRouter>
     </>

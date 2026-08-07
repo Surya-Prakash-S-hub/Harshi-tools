@@ -16,7 +16,7 @@ const NotFound = () => {
           <p>Under the keyboard.</p>
           <p>Behind the monitor.</p>
           <p>
-            Even inside <code>node_modules</code>.
+            Even inside <code className="text-warning" >node_modules</code>.
           </p>
           <p>Nope. Still missing.</p>
         </div>

@@ -132,6 +132,7 @@ const Navbar = () => {
               onChange={(e) => setActiveTheme(e.target.value)}
               className="appearance-none rounded-full border border-border bg-surface px-3 py-2 pr-9 text-sm font-medium text-text shadow-sm outline-none transition hover:border-primary focus:border-primary focus:ring-2 focus:ring-primary/30"
               aria-label="Select theme"
+              id="themeButton-desktop"
             >
               {themes.map((theme) => (
                 <option key={theme} value={theme}>
@@ -235,6 +236,7 @@ const Navbar = () => {
               onChange={(e) => setActiveTheme(e.target.value)}
               className="w-full appearance-none rounded-xl border border-border bg-background px-3 py-2.5 pr-9 text-sm font-medium text-text shadow-sm outline-none transition hover:border-primary focus:border-primary focus:ring-2 focus:ring-primary/30"
               aria-label="Select theme"
+              id="themeButton"
             >
               {themes.map((theme) => (
                 <option key={theme} value={theme}>
